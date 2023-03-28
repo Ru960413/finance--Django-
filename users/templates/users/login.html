@@ -24,12 +24,13 @@
     <div class="modal">
       <button class="btn--close-modal">×</button>
       <h2 class="modal__header">Login Account</h2>
-      <form class="modal__form">
+      <form method="POST" action="{% url 'login' %}" class="modal__form">
+        {% csrf_token %}
         <label>Username</label>
-        <input type="text" />
+        <input type="text" placeholder="Enter your username" name="username" />
         <label>Password</label>
-        <input type="password" />
-        <button class="btn">Login →</button>
+        <input type="password" placeholder="••••••••" name="password" />
+        <button class="btn" type="submit">Login →</button>
       </form>
     </div>
   </body>

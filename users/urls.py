@@ -6,7 +6,7 @@ urlpatterns = [
     # path takes 3 parameters, first: the path, second: the function which will then trigger HttpResponse
     
     # setting project page to the default page
-    path('',  views.homePage, name='homePage'),
+    path('',  views.homePage, name=''),
     path('login/',  views.UserLogin, name='login'),
     path('register/',  views.register, name='register'),
     

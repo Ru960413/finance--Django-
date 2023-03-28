@@ -1,10 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="shortcut icon" type="image/png" href="{% static '/icon.png' %} " />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static '/icon.png' %} "
+    />
 
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
@@ -12,14 +17,17 @@
     />
 
     <link rel="stylesheet" href="{% static 'css/bank.css' %} " />
-    <title>Bankist</title>
+    <title>Bank</title>
   </head>
   <body>
     <!-- TOP NAVIGATION -->
     <nav>
-      <img src="{% static 'img/logo-small.png' %} " alt="Logo" class="logo" />
+      <img src="{% static 'img/logo-small.png' %}" alt="Logo" class="logo" />
+      <!-- Change the url path to user profile page -->
+      <a href="{% url '' %}" class="back__btn">← Back</a>
     </nav>
 
+    <!-- Make the data dynamic -->
     <main class="app">
       <!-- BALANCE -->
       <div class="balance">
@@ -56,7 +64,7 @@
         <p class="summary__value summary__value--out">0000€</p>
         <p class="summary__label">Interest</p>
         <p class="summary__value summary__value--interest">0000€</p>
-        <button class="btn--sort">&downarrow; SORT</button>
+        <button class="btn--sort">↓ SORT</button>
       </div>
 
       <!-- OPERATION: TRANSFERS -->
@@ -65,7 +73,7 @@
         <form class="form form--transfer">
           <input type="text" class="form__input form__input--to" />
           <input type="number" class="form__input form__input--amount" />
-          <button class="form__btn form__btn--transfer">&rarr;</button>
+          <button class="form__btn form__btn--transfer">→</button>
           <label class="form__label">Transfer to</label>
           <label class="form__label">Amount</label>
         </form>
@@ -76,7 +84,7 @@
         <h2>Request loan</h2>
         <form class="form form--loan">
           <input type="number" class="form__input form__input--loan-amount" />
-          <button class="form__btn form__btn--loan">&rarr;</button>
+          <button class="form__btn form__btn--loan">→</button>
           <label class="form__label form__label--loan">Amount</label>
         </form>
       </div>
@@ -86,7 +94,7 @@
         <h2>Deposit money</h2>
         <form class="form form--deposit">
           <input type="number" class="form__input form__input--deposit" />
-          <button class="form__btn form__btn--deposit">&rarr;</button>
+          <button class="form__btn form__btn--deposit">→</button>
           <label class="form__label form__label--deposit">Amount</label>
         </form>
       </div>

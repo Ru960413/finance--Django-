@@ -4,9 +4,9 @@ from .forms import CustomUserCreationForm
 # Create your views here.
 
 # To-Do: implement user login, logout, register
+# To-Do: put login and register form on the index page
 def homePage(request):
-    context= {}
-    return render(request, "users/index.html", context)
+    return render(request, "users/index.html")
 
 
 def UserLogin(request):

@@ -8,7 +8,9 @@ from django.contrib.auth.decorators import login_required
 
 
 def bankDashboard(request):
-    render(request, 'bank/bank.html')
+    context={}
+    return render(request, 'bank/bank.html', context)
+
 
 
 @login_required(login_url='login')

@@ -27,10 +27,26 @@
         Open your bank account <br />
         in just <span class="highlight">5 minutes</span>
       </h2>
+      <!-- To-Do: Style the messages and help text-->
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+
       <form method="POST" action="{% url 'register' %}" class="modal__form">
-        {% csrf_token %} {% for field in form %}
+        {% csrf_token %} 
+        {% for field in form %}
         <label>{{ field.label }}</label>
-        {{ field }} {% endfor %}
+        {{ field }} 
+
+        {% if field.help_text %}
+          <small>{{ field.help_text }}</small>
+        {% endif %} 
+        {% endfor %}
+
         <button class="btn" type="submit">Create Account →</button>
       </form>
     </div>

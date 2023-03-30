@@ -236,6 +236,10 @@ nav {
   background-image: linear-gradient(to top left, #e52a5a, #ff585f);
 }
 
+.operation--withdrawal {
+  background-image: linear-gradient(to top left, #7596f3, #7d85f5);
+}
+
 h2 {
   margin-bottom: 1.5rem;
   font-size: 1.7rem;
@@ -252,11 +256,13 @@ h2 {
 
 /* Exceptions for interest */
 .form.form--loan,
-.form--deposit {
+.form--deposit,
+.form--withdrawal {
   grid-template-columns: 2.5fr 1fr 2.5fr;
 }
 .form__label--loan,
-.form__label--deposit {
+.form__label--deposit,
+.form__label--withdrawal {
   grid-row: 2;
 }
 /* End exceptions */

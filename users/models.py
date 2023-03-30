@@ -14,14 +14,6 @@ class UserProfile(models.Model):
     def __str__(self):
         return str(self.username)
 
-    def calculateMonthlyInterest(self):
-        # 2.5% per month
-        pass
-
-
-    def calculateAnnualInterest(self):
-        # add up monthly interest 
-        pass
 
 
 

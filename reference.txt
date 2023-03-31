@@ -1,0 +1,2 @@
+1. Enabling multiple submit buttons in a single Django template
+https://stackoverflow.com/questions/866272/how-can-i-build-multiple-submit-buttons-django-form

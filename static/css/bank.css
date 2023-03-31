@@ -224,20 +224,20 @@ nav {
   color: #333;
 }
 
-.operation--transfer {
-  background-image: linear-gradient(to top left, #ffb003, #ffcb03);
+.operation--withdrawal {
+  background-image: linear-gradient(to bottom right, #ffb003, #ffcb03);
 }
 
 .operation--loan {
-  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  background-image: linear-gradient(to bottom right, #39b385, #9be15d);
 }
 
 .operation--deposit {
-  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+  background-image: linear-gradient(to bottom right, #e52a5a, #ff585f);
 }
 
-.operation--withdrawal {
-  background-image: linear-gradient(to top left, #7596f3, #7d85f5);
+.operation--transfer {
+  background-image: linear-gradient(to bottom right, #7596f3, #7d85f5);
 }
 
 h2 {

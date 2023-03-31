@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Transactions
+from .models import Transaction
 from users.models import BankAccount
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -22,6 +22,7 @@ def bankDashboard(request):
     # calculate totalDeposit, totalWithdrawal, interest
 
     context={"balance": balance}
+    # context={}
 
     return render(request, 'bank/bank.html', context)
 
@@ -29,27 +30,31 @@ def bankDashboard(request):
 
 @login_required(login_url='login')
 def deposit(request):
-    # if request.method=="POST":
-    #     #get current user's profile
-    #     user_profile = request.user.userprofile
-    #     bankAccount = BankAccount.objects.get(owner=user_profile)
+    if request.method=="POST":
+        action = "deposit"
+        context = {"action": action}
 
-    #     #get current user's balance
-    #     balance=bankAccount.balance
-    #     # use post method to submit form to add money
-    #     amountOfDeposit = request.POST["deposit"]
+        # get current user's profile and bank account
+        user_profile = request.user.userprofile
+        bankAccount=BankAccount.objects.get(owner=user_profile)
 
-    #     balance += amountOfDeposit
-    #     # insert data into transaction table
+        # use post method to submit form for deposit
+        amountOfDeposit = request.POST["deposit"]
 
-    #     # flash the message to let the user know the action is successful
+        if int(amountOfDeposit):
+            # update user's balance
+            bankAccount.balance += int(amountOfDeposit)
+            bankAccount.save()
 
-    # # redirect the user to the bank dashboard
-    # context={"balance": balance}
+            # insert data into transaction table
+            new_record = Transaction(account_id=bankAccount, amount=int(amountOfDeposit))
+            new_record.save()
 
-    context={}
-
-    return render(request, 'bank/bank.html', context)
+            # redirect to successful page let the user know the action is successful
+            return render(request, 'bank/success.html', context)
+            
+        else:
+            return render(request, 'bank/fail.html', context)
 
 
 
@@ -59,15 +64,14 @@ def loan(request):
 
 
 
-@login_required(login_url='login')
-def transfer(request):
-    pass
-
+# @login_required(login_url='login')
+# def transfer(request):
+#     pass
 
 
 def calculateMonthlyInterest():
-        # 2.5% per month
-        pass
+    # 2.5% per month
+    pass
 
 
 

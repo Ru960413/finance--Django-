@@ -8,5 +8,6 @@ urlpatterns = [
     # setting project page to the default page
     path('',  views.bankDashboard, name='bankDashboard'),
     path('deposit/',  views.deposit, name='deposit'),
-    
+    path('withdrawal/',  views.withdrawal, name='withdrawal'),
+    path('loan/',  views.loan, name='loan'),
 ]

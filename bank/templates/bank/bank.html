@@ -24,7 +24,8 @@
     <nav>
       <img src="{% static 'img/logo-small.png' %}" alt="Logo" class="logo" />
       <!-- Change the url path to user profile page -->
-      <a href="{% url '' %}" class="back__btn">← Back</a>
+      <a href="{% url '' %}" class="back__btn nav__link">← Back</a>
+      <a href="{% url 'logout' %}" class="logout__btn nav__link">Log Out</a>
     </nav>
 
     <!-- Make the data dynamic -->
@@ -71,9 +72,20 @@
       <!-- OPERATION: WITHDRAWAL -->
       <div class="operation operation--withdrawal">
         <h2>Withdrawal</h2>
-        <form class="form form--withdrawal">
-          <input type="number" class="form__input form__input--withdrawal" />
-          <button class="form__btn form__btn--withdrawal">→</button>
+        <form
+          class="form form--withdrawal"
+          method="POST"
+          action="{% url 'withdrawal' %}"
+        >
+          {% csrf_token %}
+          <input
+            type="number"
+            class="form__input form__input--withdrawal"
+            name="withdrawal"
+          />
+          <button class="form__btn form__btn--withdrawal" type="submit">
+            →
+          </button>
           <label class="form__label form__label--withdrawal">Amount</label>
         </form>
       </div>
@@ -81,9 +93,14 @@
       <!-- OPERATION: LOAN -->
       <div class="operation operation--loan">
         <h2>Request loan</h2>
-        <form class="form form--loan">
-          <input type="number" class="form__input form__input--loan-amount" />
-          <button class="form__btn form__btn--loan">→</button>
+        <form class="form form--loan" method="POST" action="{% url 'loan' %}">
+          {% csrf_token %}
+          <input
+            type="number"
+            class="form__input form__input--loan-amount"
+            name="loan"
+          />
+          <button class="form__btn form__btn--loan" type="submit">→</button>
           <label class="form__label form__label--loan">Amount</label>
         </form>
       </div>
@@ -108,6 +125,7 @@
       </div>
 
       <!-- OPERATION: TRANSFERS -->
+      {% comment %}
       <div class="operation operation--transfer">
         <h2>Transfer</h2>
         <form class="form form--transfer">
@@ -118,6 +136,7 @@
           <label class="form__label">Amount</label>
         </form>
       </div>
+      {% endcomment %}
 
       <!-- LOGOUT TIMER -->
       <!--<p class="logout-timer">

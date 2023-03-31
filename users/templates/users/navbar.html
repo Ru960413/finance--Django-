@@ -1,0 +1,37 @@
+{% load static %}
+
+<nav class="nav">
+  <img
+    src="{% static 'img/logo.png' %}"
+    alt="Bankist logo"
+    class="nav__logo"
+    id="logo"
+  />
+  <ul class="nav__links">
+    {% if user.is_authenticated %}
+    <!--Display after user log in-->
+    <li class="nav__item">
+      <a class="nav__link" href="#">Stock</a>
+    </li>
+    <li class="nav__item">
+      <a class="nav__link" href="#">Currency</a>
+    </li>
+    <li class="nav__item">
+      <a class="nav__link" href="{% url 'bankDashboard' %}">Bank</a>
+    </li>
+    {% else %}
+
+    <li class="nav__item">
+      <a class="nav__link" href="{% url 'login' %}">Login</a>
+    </li>
+
+    <li class="nav__item">
+      <a
+        class="nav__link nav__link--btn btn--show-modal"
+        href="{% url 'register' %}"
+        >Open account</a
+      >
+    </li>
+    {% endif %}
+  </ul>
+</nav>

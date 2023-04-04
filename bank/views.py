@@ -77,18 +77,22 @@ def withdrawal(request):
 
         if int(amountOfWithdrawal):
             withdrawal=int(amountOfWithdrawal)
-            # update user's balance
-            bankAccount.balance = bankAccount.balance-withdrawal
-            bankAccount.save()
-            
-            # insert data into transaction table
-            amount = -withdrawal
-            new_record = Transaction(account_id=bankAccount, amount=amount)
-            new_record.save()
+            if bankAccount.balance >= withdrawal:
+                # update user's balance
+                bankAccount.balance = bankAccount.balance-withdrawal
+                bankAccount.save()
+                
+                # insert data into transaction table
+                amount = -withdrawal
+                new_record = Transaction(account_id=bankAccount, amount=amount)
+                new_record.save()
 
-            # redirect to successful page let the user know the action is successful
-            return render(request, 'bank/success.html', context)
+                # redirect to successful page let the user know the action is successful
+                return render(request, 'bank/success.html', context)
             
+            else:
+                return render(request, 'bank/fail.html', context)
+
         else:
             return render(request, 'bank/fail.html', context)
         

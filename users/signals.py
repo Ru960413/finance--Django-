@@ -1,1 +1,1 @@
-# To-Do: When user is logged in create a bank account and the user's profile
+# To-Do: When user register create a bank account and the user's profile

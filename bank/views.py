@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from .models import Transaction
 from users.models import BankAccount
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
+from django.db.models import Sum
 # Create your views here.
 
 # To-Do: implement deposit money, loan, transfer money features
@@ -17,12 +18,15 @@ def bankDashboard(request):
     # get current user's balance
     balance=bankAccount.balance
 
+    now = datetime.now()
     # get user's transaction record
+    users_record = Transaction.objects.filter(account_id=bankAccount)
 
     # calculate totalDeposit, totalWithdrawal, interest
-
-    context={"balance": balance}
-    # context={}
+    totalWithdrawal = Transaction.objects.filter(account_id=bankAccount, type="withdrawal").aggregate(Sum('amount'))
+    totalDeposit = Transaction.objects.filter(account_id=bankAccount, type="deposit").aggregate(Sum('amount'))
+    #interest = 
+    context={"balance": balance, "now": now, "users_record": users_record, "totalWithdrawal": totalWithdrawal["amount__sum"], "totalDeposit": totalDeposit["amount__sum"]}
 
     return render(request, 'bank/bank.html', context)
 
@@ -48,7 +52,7 @@ def deposit(request):
             bankAccount.save()
 
             # insert data into transaction table
-            new_record = Transaction(account_id=bankAccount, amount=deposit)
+            new_record = Transaction(account_id=bankAccount, amount=deposit, type="deposit")
             new_record.save()
 
             # redirect to successful page let the user know the action is successful
@@ -77,6 +81,7 @@ def withdrawal(request):
 
         if int(amountOfWithdrawal):
             withdrawal=int(amountOfWithdrawal)
+
             if bankAccount.balance >= withdrawal:
                 # update user's balance
                 bankAccount.balance = bankAccount.balance-withdrawal
@@ -84,7 +89,7 @@ def withdrawal(request):
                 
                 # insert data into transaction table
                 amount = -withdrawal
-                new_record = Transaction(account_id=bankAccount, amount=amount)
+                new_record = Transaction(account_id=bankAccount, amount=amount, type="withdrawal")
                 new_record.save()
 
                 # redirect to successful page let the user know the action is successful
@@ -120,7 +125,7 @@ def loan(request):
             bankAccount.save()
 
             # insert data into transaction table
-            new_record = Transaction(account_id=bankAccount, amount=loan)
+            new_record = Transaction(account_id=bankAccount, amount=loan, type="deposit")
             new_record.save()
 
             # redirect to successful page let the user know the action is successful

@@ -23,6 +23,9 @@ class BankAccount(models.Model):
     balance = models.DecimalField(default=0, max_digits=12, decimal_places=2)
     interest = models.DecimalField(default=0, max_digits=12, decimal_places=2)
 
+    @property
+    def calculateInterest(self):
+        pass
 
     def __str__(self):
         return str(self.owner)

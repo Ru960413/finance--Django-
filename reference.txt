@@ -1,2 +1,12 @@
 1. Enabling multiple submit buttons in a single Django template
 https://stackoverflow.com/questions/866272/how-can-i-build-multiple-submit-buttons-django-form
+
+2. Get the integer part of a Decimal field in a Django template
+https://stackoverflow.com/questions/8920221/get-the-integer-part-of-a-decimal-field-in-a-django-template
+
+3. Sum the values retrieved from db
+https://docs.djangoproject.com/en/dev/topics/db/aggregation/#generating-aggregates-over-a-queryset
+https://stackoverflow.com/questions/51287539/sum-of-objects-prices-in-django-template
+
+4. Django math filters
+https://pypi.org/project/django-mathfilters/

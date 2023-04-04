@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load mathfilters %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,42 +28,54 @@
       <a href="{% url 'logout' %}" class="logout__btn nav__link">Log Out</a>
     </nav>
 
-    <!-- Make the data dynamic -->
+    <!-- Make the data dynamic: DONE-->
     <main class="app">
       <!-- BALANCE -->
       <div class="balance">
         <div>
           <p class="balance__label">Current balance</p>
           <p class="balance__date">
-            As of <span class="date">05/03/2023</span>
+            As of
+            <span class="date"
+              >{{ now.year }}/{{ now.month }}/{{ now.day }}</span
+            >
           </p>
         </div>
-        <p class="balance__value">NT${{ balance }}</p>
+        <p class="balance__value">NT${{ balance|floatformat:0 }}</p>
       </div>
 
       <!-- MOVEMENTS -->
-      <!-- add data dynamicly using Transactions table-->
+      <!-- add data dynamicly using Transactions table: DONE-->
       <div class="movements">
+        {% for record in users_record %} {% if record.type == "deposit" %}
         <div class="movements__row">
-          <div class="movements__type movements__type--deposit">2 deposit</div>
-          <div class="movements__date">3 days ago</div>
-          <div class="movements__value">NT$4000</div>
+          <div class="movements__type movements__type--deposit">deposit</div>
+          <div class="movements__date">{{ record.time }}</div>
+          <div class="movements__value">
+            NT${{ record.amount|floatformat:0 }}
+          </div>
         </div>
+        {% else %}
         <div class="movements__row">
           <div class="movements__type movements__type--withdrawal">
-            1 withdrawal
+            withdrawal
           </div>
-          <div class="movements__date">24/01/2023</div>
-          <div class="movements__value">-NT$378</div>
+          <div class="movements__date">{{ record.time }}</div>
+          <div class="movements__value">
+            NT${{ record.amount|abs|floatformat:0 }}
+          </div>
         </div>
+        {% endif %} {% endfor %}
       </div>
 
       <!-- SUMMARY -->
       <div class="summary">
         <p class="summary__label">In</p>
-        <p class="summary__value summary__value--in">NT$0000</p>
+        <p class="summary__value summary__value--in">NT${{ totalDeposit }}</p>
         <p class="summary__label">Out</p>
-        <p class="summary__value summary__value--out">NT$0000</p>
+        <p class="summary__value summary__value--out">
+          NT${{ totalWithdrawal|abs }}
+        </p>
         <p class="summary__label">Interest</p>
         <p class="summary__value summary__value--interest">NT$0000</p>
         <button class="btn--sort">↓ SORT</button>
@@ -144,6 +156,6 @@
       </p>-->
     </main>
 
-    <script src="{% static 'js/bank.js' %} "></script>
+    <!--<script src="{% static 'js/bank.js' %} "></script>-->
   </body>
 </html>

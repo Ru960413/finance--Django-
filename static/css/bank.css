@@ -27,7 +27,7 @@ nav {
 
 .back__btn,
 .logout__btn {
-  font-size: 2.2rem;
+  font-size: 1.7rem;
   font-weight: 500;
   text-decoration: none;
 }
@@ -76,7 +76,7 @@ nav {
 .login__btn {
   border: none;
   background: none;
-  font-size: 2.2rem;
+  font-size: 1.7rem;
   color: inherit;
   cursor: pointer;
   transition: all 0.3s;

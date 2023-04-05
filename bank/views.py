@@ -4,6 +4,7 @@ from users.models import BankAccount
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.db.models import Sum
+from decimal import *
 # Create your views here.
 
 # To-Do: implement deposit money, loan, transfer money features
@@ -22,11 +23,26 @@ def bankDashboard(request):
     # get user's transaction record
     users_record = Transaction.objects.filter(account_id=bankAccount)
 
+    # calculate interest
+    created = bankAccount.created
+    today = datetime.now()
+    year = today.year - created.year
+
+    if year < 1:
+        year = 1
+    else:
+        year=year
+
+    interest = int(balance)*0.025*year
+    bankAccount.interest = interest
+    balance += Decimal(interest)
+    bankAccount.save()
+
     # calculate totalDeposit, totalWithdrawal, interest
     totalWithdrawal = Transaction.objects.filter(account_id=bankAccount, type="withdrawal").aggregate(Sum('amount'))
     totalDeposit = Transaction.objects.filter(account_id=bankAccount, type="deposit").aggregate(Sum('amount'))
-    
-    context={"page":page, "balance": balance, "now": now, "users_record": users_record, "totalWithdrawal": totalWithdrawal["amount__sum"], "totalDeposit": totalDeposit["amount__sum"]}
+
+    context={"page":page, "balance": balance, "now": now, "users_record": users_record, "totalWithdrawal": totalWithdrawal["amount__sum"], "totalDeposit": totalDeposit["amount__sum"], "interest": interest}
 
     return render(request, 'bank/bank.html', context)
 

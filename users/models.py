@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+from datetime import datetime
 # Create your models here.
 
 # To-Do: implement user profile model
@@ -22,7 +23,7 @@ class BankAccount(models.Model):
     account_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     balance = models.DecimalField(default=0, max_digits=12, decimal_places=2)
     interest = models.DecimalField(default=0, max_digits=12, decimal_places=2)
-
+    created = models.DateField(blank=True, default=datetime.now)
     @property
     def calculateInterest(self):
         pass

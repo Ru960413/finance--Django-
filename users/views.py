@@ -10,7 +10,9 @@ from django.contrib import messages
 # To-Do: implement user login, logout, register
 # To-Do: put login and register form on the index page
 def homePage(request):
-    return render(request, "users/index.html")
+    page="home"
+    context={"page":page}
+    return render(request, "users/index.html", context)
 
 
 def UserLogin(request):

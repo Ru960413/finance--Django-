@@ -128,6 +128,8 @@ img {
 }
 
 .alert--message {
+  display: flex;
+  flex-direction: column;
   font-size: 1.7rem;
 }
 
@@ -702,6 +704,7 @@ h4 {
 }
 
 /* COOKIE MESSAGE */
+/*
 .cookie-message {
   display: flex;
   align-items: center;
@@ -712,3 +715,4 @@ h4 {
   font-size: 1.5rem;
   font-weight: 400;
 }
+*/

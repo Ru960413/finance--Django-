@@ -72,7 +72,9 @@
           NT${{ totalWithdrawal|abs }}
         </p>
         <p class="summary__label">Interest</p>
-        <p class="summary__value summary__value--interest">NT$0000</p>
+        <p class="summary__value summary__value--interest">
+          NT${{ interest|floatformat:0 }}
+        </p>
         <!--<button class="btn--sort">↓ SORT</button>-->
       </div>
 

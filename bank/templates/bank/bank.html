@@ -17,16 +17,11 @@
     />
 
     <link rel="stylesheet" href="{% static 'css/bank.css' %} " />
-    <title>Bank</title>
+    <title>Bankist | Bank</title>
   </head>
   <body>
     <!-- TOP NAVIGATION -->
-    <nav>
-      <img src="{% static 'img/logo-small.png' %}" alt="Logo" class="logo" />
-      <!-- Change the url path to user profile page -->
-      <a href="{% url '' %}" class="back__btn nav__link">← Back</a>
-      <a href="{% url 'logout' %}" class="logout__btn nav__link">Log Out</a>
-    </nav>
+    <nav>{% include "users/navbar.html" %}</nav>
 
     <!-- Make the data dynamic: DONE-->
     <main class="app">
@@ -78,7 +73,7 @@
         </p>
         <p class="summary__label">Interest</p>
         <p class="summary__value summary__value--interest">NT$0000</p>
-        <button class="btn--sort">↓ SORT</button>
+        <!--<button class="btn--sort">↓ SORT</button>-->
       </div>
 
       <!-- OPERATION: WITHDRAWAL -->
@@ -155,7 +150,5 @@
         You will be logged out in <span class="timer">05:00</span>
       </p>-->
     </main>
-
-    <!--<script src="{% static 'js/bank.js' %} "></script>-->
   </body>
 </html>

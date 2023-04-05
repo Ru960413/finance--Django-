@@ -7,8 +7,13 @@
     class="nav__logo"
     id="logo"
   />
+
   <ul class="nav__links">
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated %} {% if page != "bank" %}
+    <li class="nav__item">
+      <a class="nav__link" href="{% url 'bankDashboard' %}">Bank</a>
+    </li>
+    {% endif %}
     <!--Display after user log in-->
     <li class="nav__item">
       <a class="nav__link" href="#">Stock</a>
@@ -17,8 +22,9 @@
       <a class="nav__link" href="#">Currency</a>
     </li>
     <li class="nav__item">
-      <a class="nav__link" href="{% url 'bankDashboard' %}">Bank</a>
+      <a class="nav__link" href="{% url 'logout' %}">Log out</a>
     </li>
+
     {% else %}
 
     <li class="nav__item">

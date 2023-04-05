@@ -10,7 +10,7 @@ from django.db.models import Sum
 
 @login_required(login_url='login')
 def bankDashboard(request):
-    
+    page="bank"
     # get current user's profile
     user_profile = request.user.userprofile
     bankAccount = BankAccount.objects.get(owner=user_profile)
@@ -25,8 +25,8 @@ def bankDashboard(request):
     # calculate totalDeposit, totalWithdrawal, interest
     totalWithdrawal = Transaction.objects.filter(account_id=bankAccount, type="withdrawal").aggregate(Sum('amount'))
     totalDeposit = Transaction.objects.filter(account_id=bankAccount, type="deposit").aggregate(Sum('amount'))
-    #interest = 
-    context={"balance": balance, "now": now, "users_record": users_record, "totalWithdrawal": totalWithdrawal["amount__sum"], "totalDeposit": totalDeposit["amount__sum"]}
+    
+    context={"page":page, "balance": balance, "now": now, "users_record": users_record, "totalWithdrawal": totalWithdrawal["amount__sum"], "totalDeposit": totalDeposit["amount__sum"]}
 
     return render(request, 'bank/bank.html', context)
 
@@ -69,7 +69,6 @@ def deposit(request):
 def withdrawal(request):
     if request.method=="POST" and "withdrawal" in request.POST:
         action = "withdrawal"
-        context = {"action": action}
 
         # get current user's profile and bank account
         user_profile = request.user.userprofile
@@ -91,14 +90,19 @@ def withdrawal(request):
                 amount = -withdrawal
                 new_record = Transaction(account_id=bankAccount, amount=amount, type="withdrawal")
                 new_record.save()
+                context = {"action": action}
 
                 # redirect to successful page let the user know the action is successful
                 return render(request, 'bank/success.html', context)
             
             else:
+                message="You don't have enough money to withdraw."
+                context = {"action": action, "message":message}
                 return render(request, 'bank/fail.html', context)
 
         else:
+            message=""
+            context = {"action": action, "message":message}
             return render(request, 'bank/fail.html', context)
         
     return render(request, 'bank/bank.html') 
@@ -132,6 +136,8 @@ def loan(request):
             return render(request, 'bank/success.html', context)
             
         else:
+            message="You don't have enough deposit to request for the loan."
+            context = {"action": action, "message":message}
             return render(request, 'bank/fail.html', context)
         
     return render(request, 'bank/bank.html')

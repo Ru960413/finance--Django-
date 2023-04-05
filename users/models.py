@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
-from datetime import datetime
+from datetime import datetime, date
 # Create your models here.
 
 # To-Do: implement user profile model
@@ -24,9 +24,23 @@ class BankAccount(models.Model):
     balance = models.DecimalField(default=0, max_digits=12, decimal_places=2)
     interest = models.DecimalField(default=0, max_digits=12, decimal_places=2)
     created = models.DateField(blank=True, default=datetime.now)
-    @property
-    def calculateInterest(self):
-        pass
+
+    # @property
+    # def calculateInterest(self):
+    #     # Interest = balance * Interest Rate * Number of Time Period
+    #     balance = self.balance
+    #     today = date.now()
+    #     year = today.year - self.created.year
+
+    #     if year < 1:
+    #         year = 1
+    #     else:
+    #         year=year
+    #     interest = balance * 0.025 * year
+    #     self.interest = interest
+        
+    #     return self.interest
+
 
     def __str__(self):
         return str(self.owner)

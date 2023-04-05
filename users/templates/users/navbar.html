@@ -15,12 +15,15 @@
     </li>
     {% endif %}
     <!--Display after user log in-->
+    {% if page != "stock" %}
     <li class="nav__item">
       <a class="nav__link" href="#">Stock</a>
     </li>
+    {% endif %} {% if page != "currency" %}
     <li class="nav__item">
       <a class="nav__link" href="#">Currency</a>
     </li>
+    {% endif %}
     <li class="nav__item">
       <a class="nav__link" href="{% url 'logout' %}">Log out</a>
     </li>

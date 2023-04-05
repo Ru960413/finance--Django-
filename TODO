@@ -1,10 +1,9 @@
 # TO-DOs for finance app
 
-    1. Calculate compound interest(users/models.py)
-    2. Create User dashboard (UI and URL)
-    3. Implement currency exchange feature
-    4. create user profile page
-    5. When user is deleted close bank account and delete user profile(users/signals.py)
+    1. Create User dashboard (UI and URL)
+    2. Implement currency exchange feature
+    3. create user profile page
+    4. When user is deleted close bank account and delete user profile(users/signals.py)
 
 ## Extras
 
@@ -12,8 +11,10 @@
     2.  implement reset password and change password features
 
 DONE
-Redo Navbar logic
-When user register create a bank account and the user's profile (users/signals.py)
+
+- Redo Navbar logic
+- When user register create a bank account and the user's profile (users/signals.py)
+- Calculate interest(users/models.py)
 
 Cancelled
 Implement transaction record sorting (frontEnd using JS, rewrite JS file)

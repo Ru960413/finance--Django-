@@ -24,21 +24,20 @@ def bankDashboard(request):
     users_record = Transaction.objects.filter(account_id=bankAccount)
 
     # calculate interest
-    # created = bankAccount.created
-    # today = datetime.now()
-    # year = today.year - created.year
+    created = bankAccount.created
+    today = datetime.now()
+    year = today.year - created.year
 
-    # if year < 1:
-    #     year = 1
-    # else:
-    #     year=year
+    if year < 1:
+        year = 1
+    else:
+        year=year
 
-    # interest = int(balance)*0.025*year
-    # bankAccount.interest = interest
-    # balance += Decimal(interest)
-    # bankAccount.save()
+    interest = int(balance)*0.025*year
+    bankAccount.interest = interest
+    balance += Decimal(interest)
+    bankAccount.save()
 
-    interest = 0
     # calculate totalDeposit, totalWithdrawal, interest
     totalWithdrawal = Transaction.objects.filter(account_id=bankAccount, type="withdrawal").aggregate(Sum('amount'))
     totalDeposit = Transaction.objects.filter(account_id=bankAccount, type="deposit").aggregate(Sum('amount'))

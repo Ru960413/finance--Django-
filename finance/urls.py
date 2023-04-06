@@ -23,4 +23,5 @@ urlpatterns = [
     # To-Do: add user URLs and Bank URLs 
     path('bank/', include('bank.urls')),
     path('', include('users.urls')),
+    path('currency/', include('currency.urls')),
 ]

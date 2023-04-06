@@ -7,9 +7,9 @@ urlpatterns = [
     
     # setting project page to the default page
     path('',  views.homePage, name=''),
+    # path('dashboard/',  views.usersDashboard, name='dashboard'),
     path('login/',  views.UserLogin, name='login'),
     path('logout/',  views.UserLogout, name='logout'),
     path('register/',  views.register, name='register'),
-    #path('dashboard/', views.dashboard, name='dashboard'),
     
 ]

@@ -10,3 +10,6 @@ https://stackoverflow.com/questions/51287539/sum-of-objects-prices-in-django-tem
 
 4. Django math filters
 https://pypi.org/project/django-mathfilters/
+
+5. currency page styling
+https://www.xe.com/currencyconverter/

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'bank.apps.BankConfig',
     'mathfilters',
+    'currency.apps.CurrencyConfig',
 ]
 
 MIDDLEWARE = [

@@ -7,8 +7,10 @@ from django.contrib import messages
 
 # Create your views here.
 
-# To-Do: implement user login, logout, register
+# To-Do: implement user login, logout, register: DONE
 # To-Do: put login and register form on the index page
+
+
 def homePage(request):
     page="home"
     context={"page":page}
@@ -70,7 +72,3 @@ def UserLogout(request):
     return render(request, "users/index.html")
 
 
-
-# @login_required(login_url='login')
-# def dashboard(request):
-#     return render(request, 'users/dashboard.html')

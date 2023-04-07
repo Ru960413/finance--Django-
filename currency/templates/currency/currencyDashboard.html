@@ -40,46 +40,74 @@
           <button class="btn operations__tab operations__tab--4" data-tab="4">
             History
           </button>
+          <button class="btn operations__tab operations__tab--5" data-tab="5">
+            Currency Own
+          </button>
         </div>
-        <!--Render form for user to quote for currency-->
+        <!--Quote: render form for user to quote for currency-->
         <div
           class="operations__content operations__content--1 operations__content--active"
         >
           <div class="operations__icon operations__icon--1"></div>
-          <form></form>
+          <form>
+            {% csrf_token %}
+            <p class="note">
+              Note: Please enter the currency code that you want to query.
+            </p>
+            <label class="form__label">From</label>
+            <input type="text" class="form__input" name="from_currency" />
+            <label class="form__label">To</label>
+            <input type="text" class="form__input" name="to_currency" />
+            <label class="form__label">Amount</label>
+            <input type="number" class="form__input" name="Amount" />
+            <button class="form__btn form__btn--loan" type="submit">→</button>
+          </form>
         </div>
 
-        <!--Render form for user to buy currency-->
+        <!--Buy: render form for user to buy currency-->
         <div class="operations__content operations__content--2">
           <div class="operations__icon operations__icon--2"></div>
-          <h5 class="operations__header">
-            Buy a home or make your dreams come true, with instant loans.
-          </h5>
-          <p>
-            Looking for a way to finance your dreams? Our bank loans offer
-            flexible terms, competitive rates, and personalized options to help
-            you achieve your goals. Whether you're looking to start a business,
-            buy a home, or consolidate debt, our loan specialists are here to
-            guide you every step of the way. Apply now and make your dreams a
-            reality.
-          </p>
+          <form>
+            {% csrf_token %}
+            <p class="note">
+              Note: Please enter the currency code that you want to buy.
+            </p>
+            <label class="form__label">Currency Code</label>
+            <input type="text" class="form__input" name="from_currency" />
+            <label class="form__label">Amount</label>
+            <input type="number" class="form__input" name="Amount" />
+            <button class="form__btn form__btn--loan" type="submit">Buy</button>
+          </form>
         </div>
-        <!--Allow user sell currency-->
+
+        <!--Sell: allow user sell currency-->
         <div class="operations__content operations__content--3">
           <div class="operations__icon operations__icon--3"></div>
-          <h5 class="operations__header">
-            Want to see your money grow? No problem! Invest today!
-          </h5>
-          <p>
-            Looking for an easy and hassle-free way to invest? Our instant
-            investment service offers a seamless experience, allowing you to
-            start investing in just a few clicks. With competitive rates, low
-            fees, and a range of options to choose from, you can build your
-            portfolio on your terms. Get started today and experience the
-            convenience of hassle-free investing.
-          </p>
+          <form>
+            {% csrf_token %}
+            <p class="note">
+              Note: Please enter the currency code that you want to sell.
+            </p>
+            <label class="form__label">Currency Code</label>
+            <input type="text" class="form__input" name="currency" />
+            <label class="form__label">Amount</label>
+            <input type="number" class="form__input" name="Amount" />
+            <button class="form__btn" type="submit">Sell</button>
+          </form>
+        </div>
+
+        <!--Load dynamic data-->
+        <!-- History: allow user view currency bought/sold-->
+        <div class="operations__content operations__content--4">
+          <div class="operations__icon operations__icon--4"></div>
+        </div>
+
+        <!-- Currency own: allow user view currency on hand-->
+        <div class="operations__content operations__content--5">
+          <div class="operations__icon operations__icon--5"></div>
         </div>
       </div>
     </div>
+  
   </body>
 </html>

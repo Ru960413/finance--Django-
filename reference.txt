@@ -13,3 +13,9 @@ https://pypi.org/project/django-mathfilters/
 
 5. currency page styling
 https://www.xe.com/currencyconverter/
+
+6. Django signal
+https://earthly.dev/blog/django-signals/
+
+7. put login and register at the same page
+https://stackoverflow.com/questions/17905377/how-to-put-login-and-registration-form-on-same-index-page

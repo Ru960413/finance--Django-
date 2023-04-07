@@ -22,73 +22,64 @@
   <body>
     <!-- TOP NAVIGATION -->
     <nav>{% include "users/navbar.html" %}</nav>
-
-    <div class="operations">
-      <div class="operations__tab-container">
-        <button
-          class="btn operations__tab operations__tab--1 operations__tab--active"
-          data-tab="1"
+    <div class="background-container">
+      <div class="operations">
+        <div class="operations__tab-container">
+          <button
+            class="btn operations__tab operations__tab--1 operations__tab--active"
+            data-tab="1"
+          >
+            Quote
+          </button>
+          <button class="btn operations__tab operations__tab--2" data-tab="2">
+            Buy
+          </button>
+          <button class="btn operations__tab operations__tab--3" data-tab="3">
+            Sell
+          </button>
+          <button class="btn operations__tab operations__tab--4" data-tab="4">
+            History
+          </button>
+        </div>
+        <!--Render form for user to quote for currency-->
+        <div
+          class="operations__content operations__content--1 operations__content--active"
         >
-          Quote
-        </button>
-        <button class="btn operations__tab operations__tab--2" data-tab="2">
-          Buy
-        </button>
-        <button class="btn operations__tab operations__tab--3" data-tab="3">
-          Sell
-        </button>
-        <button class="btn operations__tab operations__tab--4" data-tab="4">
-          History
-        </button>
-      </div>
-      <!--Render form for user to quote for currency-->
-      <div
-        class="operations__content operations__content--1 operations__content--active"
-      >
-        <div class="operations__icon operations__icon--1"></div>
-        <h5 class="operations__header">
-          Transfer money to anyone, instantly! No fees, no BS.
-        </h5>
-        <p>
-          Say goodbye to the hassle of mailing checks or carrying cash with our
-          easy and secure money transfer service. Whether you need to send money
-          to friends or family across the globe, pay bills or rent, our fast and
-          affordable transfer system is available 24/7. Experience the
-          convenience of hassle-free money transfers today.
-        </p>
-      </div>
+          <div class="operations__icon operations__icon--1"></div>
+          <form></form>
+        </div>
 
-      <!--Render form for user to buy currency-->
-      <div class="operations__content operations__content--2">
-        <div class="operations__icon operations__icon--2"></div>
-        <h5 class="operations__header">
-          Buy a home or make your dreams come true, with instant loans.
-        </h5>
-        <p>
-          Looking for a way to finance your dreams? Our bank loans offer
-          flexible terms, competitive rates, and personalized options to help
-          you achieve your goals. Whether you're looking to start a business,
-          buy a home, or consolidate debt, our loan specialists are here to
-          guide you every step of the way. Apply now and make your dreams a
-          reality.
-        </p>
-      </div>
-      <!--Allow user sell currency-->
-      <div class="operations__content operations__content--3">
-        <div class="operations__icon operations__icon--3"></div>
-        <h5 class="operations__header">
-          Want to see your money grow? No problem! Invest today!
-        </h5>
-        <p>
-          Looking for an easy and hassle-free way to invest? Our instant
-          investment service offers a seamless experience, allowing you to start
-          investing in just a few clicks. With competitive rates, low fees, and
-          a range of options to choose from, you can build your portfolio on
-          your terms. Get started today and experience the convenience of
-          hassle-free investing.
-        </p>
+        <!--Render form for user to buy currency-->
+        <div class="operations__content operations__content--2">
+          <div class="operations__icon operations__icon--2"></div>
+          <h5 class="operations__header">
+            Buy a home or make your dreams come true, with instant loans.
+          </h5>
+          <p>
+            Looking for a way to finance your dreams? Our bank loans offer
+            flexible terms, competitive rates, and personalized options to help
+            you achieve your goals. Whether you're looking to start a business,
+            buy a home, or consolidate debt, our loan specialists are here to
+            guide you every step of the way. Apply now and make your dreams a
+            reality.
+          </p>
+        </div>
+        <!--Allow user sell currency-->
+        <div class="operations__content operations__content--3">
+          <div class="operations__icon operations__icon--3"></div>
+          <h5 class="operations__header">
+            Want to see your money grow? No problem! Invest today!
+          </h5>
+          <p>
+            Looking for an easy and hassle-free way to invest? Our instant
+            investment service offers a seamless experience, allowing you to
+            start investing in just a few clicks. With competitive rates, low
+            fees, and a range of options to choose from, you can build your
+            portfolio on your terms. Get started today and experience the
+            convenience of hassle-free investing.
+          </p>
+        </div>
       </div>
     </div>
-    {{ data }}
   </body>
 </html>

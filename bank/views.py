@@ -164,14 +164,3 @@ def loan(request):
 # @login_required(login_url='login')
 # def transfer(request):
 #     pass
-
-
-def calculateMonthlyInterest():
-    # 2.5% per month
-    pass
-
-
-
-def calculateAnnualInterest():
-    # add up monthly interest 
-    pass

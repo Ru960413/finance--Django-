@@ -1,4 +1,4 @@
-{% load static %} {% load mathfilters %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,6 +17,7 @@
     />
 
     <link rel="stylesheet" href="{% static 'css/currency.css' %} " />
+    <script defer src="{% static 'js/currency.js' %}"></script>
     <title>Bankist | Currency</title>
   </head>
   <body>
@@ -49,25 +50,25 @@
           class="operations__content operations__content--1 operations__content--active"
         >
           <div class="operations__icon operations__icon--1"></div>
-          <form>
+          <form action="{% url 'quote' %}" method="POST">
             {% csrf_token %}
             <p class="note">
               Note: Please enter the currency code that you want to query.
             </p>
+            <label class="form__label">Amount</label>
+            <input type="number" class="form__input" name="amount" />
             <label class="form__label">From</label>
             <input type="text" class="form__input" name="from_currency" />
             <label class="form__label">To</label>
-            <input type="text" class="form__input" name="to_currency" />
-            <label class="form__label">Amount</label>
-            <input type="number" class="form__input" name="Amount" />
-            <button class="form__btn form__btn--loan" type="submit">→</button>
+            <label class="form__label">TWD</label>
+            <button class="form__btn" type="submit">→</button>
           </form>
         </div>
 
         <!--Buy: render form for user to buy currency-->
         <div class="operations__content operations__content--2">
           <div class="operations__icon operations__icon--2"></div>
-          <form>
+          <form action="{% url 'buy' %}" method="POST">
             {% csrf_token %}
             <p class="note">
               Note: Please enter the currency code that you want to buy.
@@ -83,7 +84,7 @@
         <!--Sell: allow user sell currency-->
         <div class="operations__content operations__content--3">
           <div class="operations__icon operations__icon--3"></div>
-          <form>
+          <form action="{% url 'sell' %}" method="POST">
             {% csrf_token %}
             <p class="note">
               Note: Please enter the currency code that you want to sell.
@@ -96,18 +97,22 @@
           </form>
         </div>
 
-        <!--Load dynamic data-->
+        <!--Load dynamic data using variables-->
         <!-- History: allow user view currency bought/sold-->
         <div class="operations__content operations__content--4">
-          <div class="operations__icon operations__icon--4"></div>
+          <div class="operations__icon operations__icon--4">
+            <p>Render user's currency transaction history</p>
+          </div>
         </div>
 
+        <!--Load dynamic data using variables-->
         <!-- Currency own: allow user view currency on hand-->
         <div class="operations__content operations__content--5">
-          <div class="operations__icon operations__icon--5"></div>
+          <div class="operations__icon operations__icon--5">
+            <p>Render currency owned</p>
+          </div>
         </div>
       </div>
     </div>
-  
   </body>
 </html>

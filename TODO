@@ -3,8 +3,7 @@
     1. Implement currency exchange feature
     2. create user profile page
     3. When user is deleted close bank account and delete user profile(users/signals.py)
-    4. use JavaScript to render different forms at currency dashboard
-    5. restyle alert message and helper text
+    4. restyle alert message and helper text
 
 ## Extras
 
@@ -16,6 +15,7 @@ DONE
 - Redo Navbar logic
 - When user register create a bank account and the user's profile (users/signals.py)
 - Calculate interest(users/models.py)
+- use JavaScript to render different forms at currency dashboard
 
 Cancelled
 

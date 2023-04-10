@@ -8,6 +8,6 @@ urlpatterns = [
     
     # setting project page to the default page
     path('',  views.currencyDashboard, name='currencyDashboard'),
-    #path('api/', views.api, name='api'),
+    path('quote/', views.quote, name='quote'),
     
 ]

@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %}{% load mathfilters %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,7 +53,7 @@
           <form action="{% url 'quote' %}" method="POST">
             {% csrf_token %}
             <p class="note">
-              Note: Please enter the currency code that you want to query.
+              Please enter the currency code that you want to query.
             </p>
             <label class="form__label">Amount</label>
             <input type="number" class="form__input" name="amount" />
@@ -71,12 +71,12 @@
           <form action="{% url 'buy' %}" method="POST">
             {% csrf_token %}
             <p class="note">
-              Note: Please enter the currency code that you want to buy.
+              Please enter the currency code that you want to buy.
             </p>
             <label class="form__label">Currency Code</label>
-            <input type="text" class="form__input" name="from_currency" />
+            <input type="text" class="form__input" name="currency_code" />
             <label class="form__label">Amount</label>
-            <input type="number" class="form__input" name="Amount" />
+            <input type="number" class="form__input" name="amount" />
             <button class="form__btn form__btn--loan" type="submit">Buy</button>
           </form>
         </div>
@@ -87,12 +87,12 @@
           <form action="{% url 'sell' %}" method="POST">
             {% csrf_token %}
             <p class="note">
-              Note: Please enter the currency code that you want to sell.
+              Please enter the currency code that you want to sell.
             </p>
             <label class="form__label">Currency Code</label>
-            <input type="text" class="form__input" name="currency" />
+            <input type="text" class="form__input" name="currency_code" />
             <label class="form__label">Amount</label>
-            <input type="number" class="form__input" name="Amount" />
+            <input type="number" class="form__input" name="amount" />
             <button class="form__btn" type="submit">Sell</button>
           </form>
         </div>
@@ -100,16 +100,39 @@
         <!--Load dynamic data using variables-->
         <!-- History: allow user view currency bought/sold-->
         <div class="operations__content operations__content--4">
-          <div class="operations__icon operations__icon--4">
-            <p>Render user's currency transaction history</p>
+          <div class="operations__icon operations__icon--4"></div>
+          <!-- MOVEMENTS -->
+          <!-- add data dynamicly using currencyTransaction table-->
+          {% for record in users_record %} {% if record.type == "buy" %}
+          <div class="movements__row">
+            <div class="movements__type movements__type--buy">buy</div>
+            <div class="movements__date">{{ record.time }}</div>
+            <div class="movements__value">{{ record.currency }}</div>
+            <div class="movements__value">
+              ${{ record.amount|floatformat:0 }}
+            </div>
           </div>
+          {% else %}
+          <div class="movements__row">
+            <div class="movements__type movements__type--sell">sell</div>
+            <div class="movements__date">{{ record.time }}</div>
+            <div class="movements__value">NT${{ record.amount|abs }}</div>
+          </div>
+          {% endif %} {% endfor %}
         </div>
 
         <!--Load dynamic data using variables-->
         <!-- Currency own: allow user view currency on hand-->
         <div class="operations__content operations__content--5">
           <div class="operations__icon operations__icon--5">
-            <p>Render currency owned</p>
+            <!--{% for row in currencies_own %}
+            <div class="movements__row">
+              <div class="movements__value">{{ row.currency }}</div>
+              <div class="movements__value">
+                ${{ row.amount|floatformat:0 }}
+              </div>
+            </div>
+            {% endfor %}-->
           </div>
         </div>
       </div>

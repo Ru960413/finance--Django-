@@ -15,19 +15,20 @@
       href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{% static 'css/fail.css' %} " />
-    <title>Bankist | Fail</title>
+    <link rel="stylesheet" href="{% static 'css/success.css' %} " />
+    <title>Bankist | Success</title>
 
     <script defer src="{% static 'js/script.js' %}"></script>
   </head>
   <body>
     <header class="header">
       {% include 'users/navbar.html' %}
-      <a href="{% url 'bankDashboard' %}" class="back__btn">← Go back</a>
-      <div class="alert--container alert--container--fail">
+      <a href="{% url 'currencyDashboard' %}" class="back__btn">← Go back</a>
+      <div class="alert--container--success alert--container">
         <div class="alert--message">
-          <h2>Oh no! Someting went wrong during {{ action }}.</h2>
-          <h2>{{ message }}</h2>
+          <h2>Yay! The {{ action }} is successful!</h2>
+          <h2>{{ currency_own }}</h2>
+          <!--Add link to view currency bought/sold-->
         </div>
       </div>
     </header>

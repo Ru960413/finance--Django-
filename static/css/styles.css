@@ -101,9 +101,9 @@ p {
 }
 
 /* This is BAD for accessibility! Don't do in the real world! */
-button:focus {
+/* button:focus {
   outline: none;
-}
+} */
 
 img {
   transition: filter 0.5s;
@@ -111,49 +111,6 @@ img {
 
 .lazy-img {
   filter: blur(20px);
-}
-
-.alert--message {
-  display: flex;
-  justify-content: center;
-  padding: 25px;
-}
-
-.alert--container {
-  display: block;
-  margin: auto;
-  height: auto;
-  width: 600px;
-  border-radius: 10px;
-}
-
-.alert--message {
-  display: flex;
-  flex-direction: column;
-  font-size: 1.7rem;
-}
-
-.alert--container--success {
-  background-color: #9be15d;
-}
-
-.alert--container--fail {
-  background-color: #ff585f;
-}
-
-.back__btn {
-  font-size: 1.7rem;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.back__btn:visited {
-  color: #444;
-}
-
-.back__btn:hover {
-  outline: none;
-  color: #777;
 }
 
 /* NAVIGATION */
@@ -702,17 +659,3 @@ h4 {
   visibility: hidden;
   opacity: 0;
 }
-
-/* COOKIE MESSAGE */
-/*
-.cookie-message {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  background-color: white;
-  color: #bbb;
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-*/

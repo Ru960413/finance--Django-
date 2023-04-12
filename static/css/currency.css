@@ -283,8 +283,15 @@ h2 {
 }
 
 /* MOVEMENTS */
+.movements {
+  /* grid-row: 1 / span 3; */
+  background-color: #fff;
+  /* border-radius: 1rem;
+  overflow: scroll;*/
+}
+
 .movements__row {
-  /* padding: 2.25rem; */
+  padding: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -321,4 +328,9 @@ h2 {
 .movements__value {
   font-size: 1.7rem;
   margin-left: auto;
+}
+
+.link {
+  text-decoration: none;
+  color: #333;
 }

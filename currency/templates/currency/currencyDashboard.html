@@ -45,6 +45,7 @@
             Currency Own
           </button>
         </div>
+
         <!--Quote: render form for user to quote for currency-->
         <div
           class="operations__content operations__content--1 operations__content--active"
@@ -103,36 +104,47 @@
           <div class="operations__icon operations__icon--4"></div>
           <!-- MOVEMENTS -->
           <!-- add data dynamicly using currencyTransaction table-->
-          {% for record in users_record %} {% if record.type == "buy" %}
-          <div class="movements__row">
-            <div class="movements__type movements__type--buy">buy</div>
-            <div class="movements__date">{{ record.time }}</div>
-            <div class="movements__value">{{ record.currency }}</div>
-            <div class="movements__value">
-              ${{ record.amount|floatformat:0 }}
+          <div class="movements">
+            {% for record in users_record %} {% if record.type == "buy" %}
+            <div class="movements__row">
+              <div class="movements__type movements__type--buy">
+                currency bought
+              </div>
+              <div class="movements__date">{{ record.time }}</div>
+              <div class="movements__value">{{ record.currency }}</div>
+              <div class="movements__value">
+                {{ record.amount|floatformat:0 }}
+              </div>
             </div>
+            {% else %}
+            <div class="movements__row">
+              <div class="movements__type movements__type--sell">
+                currency sold
+              </div>
+              <div class="movements__date">{{ record.time }}</div>
+              <div class="movements__value">{{ record.currency }}</div>
+              <div class="movements__value">
+                {{ record.amount|abs|floatformat:0 }}
+              </div>
+            </div>
+            {% endif %} {% endfor %}
           </div>
-          {% else %}
-          <div class="movements__row">
-            <div class="movements__type movements__type--sell">sell</div>
-            <div class="movements__date">{{ record.time }}</div>
-            <div class="movements__value">NT${{ record.amount|abs }}</div>
-          </div>
-          {% endif %} {% endfor %}
         </div>
 
         <!--Load dynamic data using variables-->
         <!-- Currency own: allow user view currency on hand-->
         <div class="operations__content operations__content--5">
           <div class="operations__icon operations__icon--5">
-            <!--{% for row in currencies_own %}
-            <div class="movements__row">
-              <div class="movements__value">{{ row.currency }}</div>
-              <div class="movements__value">
-                ${{ row.amount|floatformat:0 }}
+            <div class="movements">
+              {% for row in currencies_own %}
+              <div class="movements__row">
+                <div class="movements__value">{{ row.currency }}</div>
+                <div class="movements__value">
+                  {{ row.amount|floatformat:0 }}
+                </div>
               </div>
+              {% endfor %}
             </div>
-            {% endfor %}-->
           </div>
         </div>
       </div>

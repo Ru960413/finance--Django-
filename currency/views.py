@@ -4,7 +4,8 @@ from .models import currencyTransaction
 from users.models import BankAccount
 from .helpers import twd, lookup
 from decimal import *
-from django.db.models import Sum, Count
+from django.db.models import Sum
+from django.db import connection
 # Create your views here.
 
 
@@ -18,11 +19,17 @@ def currencyDashboard(request):
     # For "History" tab
     users_record = currencyTransaction.objects.filter(account_id=bankAccount)
 
-    # Not working...
+    # Error: can render currencies own, but cannot sum the amount of currency own 
     # For "Currency Own" tab
     # get the sum of each currency from user's currencyTransaction table
-    currencies_own = currencyTransaction.objects.filter(account_id=bankAccount).values('currency', 'amount').annotate(Sum('amount'))
 
+    currencies_own = currencyTransaction.objects.filter(account_id=bankAccount).values('currency', 'amount').annotate(Sum('amount')).order_by('currency')
+    
+    # user_account = BankAccount.objects.filter(owner=user_profile)
+    # with connection.cursor() as cursor:
+    #     currencies_own = cursor.execute("SELECT currency, SUM(amount) FROM currency_transaction WHERE account_id = ? GROUP BY currency", user_account)
+
+    # currencies_own = currencyTransaction.objects.filter(account_id=bankAccount).aggregate(Sum('amount'))
     
     context={"users_record": users_record, "page":page, "currencies_own": currencies_own}
     return render(request, 'currency/currencyDashboard.html', context)
@@ -101,7 +108,7 @@ def buy(request):
                 bankAccount.save()
             
                 # add it to currency transaction record
-                new_record = currencyTransaction(account_id=bankAccount, currency=currency_code, amount=amount, type="buy")
+                new_record = currencyTransaction(account_id=bankAccount, currency=currency_code, amount=amount)
                 new_record.save()
 
                 context={"action": action}
@@ -158,7 +165,7 @@ def sell(request):
 
                 # add it into currency Transaction table
                 amount=-amount
-                new_record = currencyTransaction(account_id=bankAccount, currency=currency_code, amount=amount, type="sell")
+                new_record = currencyTransaction(account_id=bankAccount, currency=currency_code, amount=amount)
                 new_record.save()
                 context={"action": action}
 

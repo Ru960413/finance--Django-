@@ -11,8 +11,22 @@ from django.db.models import Sum, Count
 @login_required(login_url='login')
 def currencyDashboard(request):
     page="currency"
-    context={"page":page}
+    # get user's profile and bank account
+    user_profile = request.user.userprofile
+    bankAccount = BankAccount.objects.get(owner=user_profile)
+
+    # For "History" tab
+    users_record = currencyTransaction.objects.filter(account_id=bankAccount)
+
+    # Not working...
+    # For "Currency Own" tab
+    # get the sum of each currency from user's currencyTransaction table
+    currencies_own = currencyTransaction.objects.filter(account_id=bankAccount).values('currency', 'amount').annotate(Sum('amount'))
+
+    
+    context={"users_record": users_record, "page":page, "currencies_own": currencies_own}
     return render(request, 'currency/currencyDashboard.html', context)
+    
 
 
 # DONE
@@ -151,31 +165,3 @@ def sell(request):
                 return render(request, 'currency/success.html', context)
             
     return render(request, 'currency/currencyDashboard.html')
-
-
-
-# access currencyTransaction table and then load the data dynamically to currencyDashboard
-@login_required(login_url='login')
-def history(request):
-    # get user's profile and bank account
-    user_profile = request.user.userprofile
-    bankAccount = BankAccount.objects.get(owner=user_profile)
-    users_record = currencyTransaction.objects.filter(account_id=bankAccount)
-    context={"users_record": users_record}
-
-    return render(request, 'currency/currencyDashboard.html', context)
-
-
-
-# access currencyTransaction table and then load the data dynamically to currencyDashboard
-# @login_required(login_url='login')
-# def currencyOwn(request):
-#     user_profile = request.user.userprofile
-#     bankAccount = BankAccount.objects.get(owner=user_profile)
-    
-#     # get the sum of each currency from user's currencyTransaction table
-#     currencies_own = currencyTransaction.objects.filter(account_id=bankAccount).values('currency').aggregate(Sum('amount')).order_by()
-
-#     context={"currencies_own": currencies_own}
-
-#     return render(request, 'currency/currencyDashboard.html', context)

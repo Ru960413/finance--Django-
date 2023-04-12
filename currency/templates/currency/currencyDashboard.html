@@ -105,11 +105,9 @@
           <!-- MOVEMENTS -->
           <!-- add data dynamicly using currencyTransaction table-->
           <div class="movements">
-            {% for record in users_record %} {% if record.type == "buy" %}
+            {% for record in users_record %} {% if record.amount > 0 %}
             <div class="movements__row">
-              <div class="movements__type movements__type--buy">
-                currency bought
-              </div>
+              <div class="movements__type movements__type--buy">bought</div>
               <div class="movements__date">{{ record.time }}</div>
               <div class="movements__value">{{ record.currency }}</div>
               <div class="movements__value">
@@ -118,9 +116,7 @@
             </div>
             {% else %}
             <div class="movements__row">
-              <div class="movements__type movements__type--sell">
-                currency sold
-              </div>
+              <div class="movements__type movements__type--sell">sold</div>
               <div class="movements__date">{{ record.time }}</div>
               <div class="movements__value">{{ record.currency }}</div>
               <div class="movements__value">

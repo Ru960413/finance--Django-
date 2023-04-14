@@ -86,6 +86,17 @@ DATABASES = {
     }
 }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'finance',
+        'USER': 'postgres',
+        'PASSWORD': 'qaz12345',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+# run "pip install psycopg2" in the terminal to connect the postgreSQL db to app
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

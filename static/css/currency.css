@@ -334,3 +334,16 @@ h2 {
   text-decoration: none;
   color: #333;
 }
+
+table,
+td,
+th {
+  border: 1px solid #eee;
+  padding: 2rem;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+table {
+  margin: auto;
+}

@@ -23,15 +23,16 @@ def currencyDashboard(request):
     # For "Currency Own" tab
     # get the sum of each currency from user's currencyTransaction table
 
+    #currencies_own = currencyTransaction.objects.filter(account_id=bankAccount).values('currency','amount')
+    
+    #id = currencyTransaction.objects.filter(account_id=bankAccount).values('account_id_id')[0]
+    # cursor = connection.cursor()
+    # currencies_own = cursor.execute("SELECT currency, amount FROM currency_currencytransaction WHERE account_id_id=1 GROUP BY currency;")
+    # rows = cursor.fetchall()
     currencies_own = currencyTransaction.objects.filter(account_id=bankAccount).values('currency', 'amount').annotate(Sum('amount')).order_by('currency')
-    
-    # user_account = BankAccount.objects.filter(owner=user_profile)
-    # with connection.cursor() as cursor:
-    #     currencies_own = cursor.execute("SELECT currency, SUM(amount) FROM currency_transaction WHERE account_id = ? GROUP BY currency", user_account)
-
-    # currencies_own = currencyTransaction.objects.filter(account_id=bankAccount).aggregate(Sum('amount'))
-    
     context={"users_record": users_record, "page":page, "currencies_own": currencies_own}
+    
+
     return render(request, 'currency/currencyDashboard.html', context)
     
 

@@ -10,11 +10,17 @@ from django.contrib import messages
 # To-Do: implement user login, logout, register: DONE
 # To-Do: put login and register form on the index page
 
+# If user is logged in then render profile page, otherwise render homepage
+def profile(request):
+    pass
+
+
 
 def homePage(request):
     page="home"
     context={"page":page}
     return render(request, "users/index.html", context)
+
 
 
 def UserLogin(request):
@@ -70,5 +76,3 @@ def UserLogout(request):
     logout(request)
     messages.success(request, "User logged out successfully!" )
     return render(request, "users/index.html")
-
-

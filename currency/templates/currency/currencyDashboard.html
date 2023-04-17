@@ -140,15 +140,7 @@
                 </tr>
               </thead>
               <tbody>
-                {% for row in currencies_own %}
-                <tr>
-                  <td>{{ row.currency }}</td>
-                  <td>{{ row.amount }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-              {% comment %}
-              <tbody>
+                {{ id }}
                 {% for key, value in rows.items %}
                 <tr>
                   <td>{{ key }}</td>
@@ -156,7 +148,6 @@
                 </tr>
                 {% endfor %}
               </tbody>
-              {% endcomment %}
             </table>
           </div>
         </div>

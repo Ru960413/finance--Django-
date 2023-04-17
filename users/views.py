@@ -12,7 +12,9 @@ from django.contrib import messages
 
 # If user is logged in then render profile page, otherwise render homepage
 def profile(request):
-    pass
+    page="profile"
+    context={"page":page}
+    return render(request, "users/profile.html", context)
 
 
 

@@ -11,6 +11,6 @@ urlpatterns = [
     path('login/',  views.UserLogin, name='login'),
     path('logout/',  views.UserLogout, name='logout'),
     path('register/',  views.register, name='register'),
-    # path('profile/',  views.profile, name='profile'),
+    path('profile/',  views.profile, name='profile'),
     
 ]

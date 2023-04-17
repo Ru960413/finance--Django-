@@ -16,18 +16,19 @@
     </li>
     {% endif %}
     <!--Display after user log in-->
-    {% if page != "stock" %}
+    {% comment %} {% if page != "stock" %}
     <li class="nav__item">
       <a class="nav__link" href="#">Stock</a>
     </li>
-    {% endif %} {% if page != "currency" %}
+    {% endif %}{% endcomment %} {% if page != "currency" %}
     <li class="nav__item">
       <a class="nav__link" href="{% url 'currencyDashboard' %}">Currency</a>
     </li>
-    {% endif %}
+    {% endif %} {% if page != "profile" %}
     <li class="nav__item">
-      <a class="nav__link" href="#">Profile</a>
+      <a class="nav__link" href="{% url 'profile' %}">Profile</a>
     </li>
+    {% endif %}
     <li class="nav__item">
       <a class="nav__link" href="{% url 'logout' %}">Log out</a>
     </li>

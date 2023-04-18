@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load mathfilters %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="{% static 'css/styles.css' %} " />
+
     <title>Bankist | Profile</title>
 
     <script defer src="{% static 'js/script.js' %}"></script>
@@ -26,6 +27,27 @@
     <!--Render user info, using user profile table-->
     <!--show user's first name, last name, username, email-->
     <!--add feature to change and reset password-->
-    <h1>This is the profile page</h1>
+    <div class="content-wrapper">
+      <div class="image-container">
+        <img
+          src="{% static 'css/profile_pic.jpg' %}"
+          alt="profile-pic"
+          class="profile-pic"
+        />
+      </div>
+      <div class="info_container">
+        <div class="info">First Name: {{ user_info.firstName }}</div>
+        <div class="info">Last Name: {{ user_info.lastName }}</div>
+        <div class="info">Username: {{ user_info.username }}</div>
+        <div class="info">Email Address: {{ user_info.email }}</div>
+        <div class="info">Bank Account: {{ bankAccount.account_id }}</div>
+        <div class="info">
+          Current Balance: NT${{ bankAccount.balance|floatformat:0 }}
+        </div>
+        <button class="btn-profile btn-edit"><a href="{% url 'edit-profile' %}">Edit Profile</a></button>
+        <button class="btn-profile btn-change"><a href="{% url 'change-password' %}">Change password</a></button>
+        <button class="btn-profile btn-delete"><a href="{% url 'delete-account' %}">Delete Account</button>
+      </div>
+    </div>
   </body>
 </html>

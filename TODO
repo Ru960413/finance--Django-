@@ -1,14 +1,8 @@
 # TO-DOs for finance app
 
-    1. Implement currency exchange feature
-    2. create user profile page
-    3. When user is deleted close bank account and delete user profile(users/signals.py)
-    4. restyle alert message and helper text
-
-## Extras
-
-    1. put login and register page on index.html
-    2.  implement reset password and change password features
+    1. When user is deleted close bank account and delete user profile(users/signals.py)
+    2. put login and register page on index.html
+    3. implement reset password, change password, delete account features
 
 DONE
 
@@ -16,8 +10,11 @@ DONE
 - When user register create a bank account and the user's profile (users/signals.py)
 - Calculate interest(users/models.py)
 - use JavaScript to render different forms at currency dashboard
+- Implement currency exchange feature(mostly done, but there is a unsolved issue)
+- create user profile page
 
 Cancelled
 
 - Implement transaction record sorting (frontEnd using JS, rewrite JS file)
 - Create User dashboard (UI and URL)
+- restyle alert message and helper text

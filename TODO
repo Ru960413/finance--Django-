@@ -1,8 +1,12 @@
 # TO-DOs for finance app
 
     1. When user is deleted close bank account and delete user profile(users/signals.py)
-    2. put login and register page on index.html
-    3. implement reset password, change password, delete account features
+    2. implement reset password, change password, delete account features
+    3. add column in db for user to upload profile pic
+
+## Extra
+
+    - put login and register page on index.html
 
 DONE
 

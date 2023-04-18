@@ -28,13 +28,13 @@
         in just <span class="highlight">5 minutes</span>
       </h2>
       <!-- To-Do: Style the messages and help text-->
-      {% if messages %}
+      {% comment %} {% if messages %}
       <ul class="messages">
           {% for message in messages %}
           <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
           {% endfor %}
       </ul>
-      {% endif %}
+      {% endif %} {% endcomment %}
 
       <form method="POST" action="{% url 'register' %}" class="modal__form">
         {% csrf_token %} 
@@ -42,13 +42,17 @@
         <label>{{ field.label }}</label>
         {{ field }} 
 
-        {% if field.help_text %}
+        {% comment %} {% if field.help_text %}
           <small>{{ field.help_text }}</small>
-        {% endif %} 
+        {% endif %}  {% endcomment %}
         {% endfor %}
 
         <button class="btn" type="submit">Create Account →</button>
       </form>
+      <div>
+      <div class="login_text">Already have an account?</div>
+      <a class="login_link" href="{% url 'login' %}">Log in</a>
+      </div>
     </div>
   </body>
 </html>

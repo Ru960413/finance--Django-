@@ -4,6 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from . models import UserProfile, BankAccount
 
 # Create your views here.
 
@@ -13,7 +14,9 @@ from django.contrib import messages
 # If user is logged in then render profile page, otherwise render homepage
 def profile(request):
     page="profile"
-    context={"page":page}
+    user_info = request.user.userprofile
+    bankAccount = BankAccount.objects.get(owner=user_info)
+    context={"page":page, "user_info": user_info, "bankAccount": bankAccount}
     return render(request, "users/profile.html", context)
 
 
@@ -78,3 +81,19 @@ def UserLogout(request):
     logout(request)
     messages.success(request, "User logged out successfully!" )
     return render(request, "users/index.html")
+
+
+@login_required(login_url='login')
+def editProfile(request):
+    pass
+
+
+
+@login_required(login_url='login')
+def deleteAccount(request):
+    pass
+
+
+@login_required(login_url='login')
+def changePassword(request):
+    pass

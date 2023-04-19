@@ -136,7 +136,7 @@ STATIC_URL = 'static/'
 
 MEDIA_URL = '/img/'
 
-# tell Django to use th static file
+# tell Django to use the static file
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
@@ -146,5 +146,5 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# tell Django where to store th image
+# tell Django where to store the image
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')

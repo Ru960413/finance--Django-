@@ -12,30 +12,14 @@ const tabsContent = document.querySelectorAll(".operations__content");
 const nav = document.querySelector(".nav");
 
 ///////////////////////////////////////
-// Modal window
+//Modal window
 
-// const openModal = function (e) {
-//   // Prevent the behavior of when clicking a link, the page would scroll to the top
-//   e.preventDefault();
-//   modal.classList.remove("hidden");
-//   overlay.classList.remove("hidden");
-// };
-
-// const closeModal = function () {
-//   modal.classList.add("hidden");
-//   overlay.classList.add("hidden");
-// };
-
-// btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
-
-// btnCloseModal.addEventListener("click", closeModal);
-// overlay.addEventListener("click", closeModal);
-
-// document.addEventListener("keydown", function (e) {
-//   if (e.key === "Escape" && !modal.classList.contains("hidden")) {
-//     closeModal();
-//   }
-// });
+const openModal = function (e) {
+  // Prevent the behavior of when clicking a link, the page would scroll to the top
+  e.preventDefault();
+  modal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+};
 
 // implement scrolling to next section when clicking on "learn more"
 btnScrollTo.addEventListener("click", function (e) {

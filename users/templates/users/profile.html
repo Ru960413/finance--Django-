@@ -25,29 +25,29 @@
     {% include 'users/navbar.html' %}
 
     <!--Render user info, using user profile table-->
-    <!--show user's first name, last name, username, email-->
-    <!--add feature to change and reset password-->
-    <div class="content-wrapper">
-      <div class="image-container">
-        <img
-          src="{% static 'css/profile_pic.jpg' %}"
-          alt="profile-pic"
-          class="profile-pic"
-        />
-      </div>
-      <div class="info_container">
-        <div class="info">First Name: {{ user_info.firstName }}</div>
-        <div class="info">Last Name: {{ user_info.lastName }}</div>
-        <div class="info">Username: {{ user_info.username }}</div>
-        <div class="info">Email Address: {{ user_info.email }}</div>
-        <div class="info">Bank Account: {{ bankAccount.account_id }}</div>
-        <div class="info">
-          Current Balance: NT${{ bankAccount.balance|floatformat:0 }}
+    <!--show user's first name, last name, username, email DONE-->
+    <!--add feature to change password and delete account-->
+      <div class="content-wrapper">
+        <div class="image-container">
+          <img
+            src="{{ user_info.profile_image.url }}"
+            alt="profile-pic"
+            class="profile-pic"
+          />
         </div>
-        <button class="btn-profile btn-edit"><a href="{% url 'edit-profile' %}">Edit Profile</a></button>
-        <button class="btn-profile btn-change"><a href="{% url 'change-password' %}">Change password</a></button>
-        <button class="btn-profile btn-delete"><a href="{% url 'delete-account' %}">Delete Account</button>
+        <div class="info_container">
+          <div class="info">First Name: {{ user_info.firstName }}</div>
+          <div class="info">Last Name: {{ user_info.lastName }}</div>
+          <div class="info">Username: {{ user_info.username }}</div>
+          <div class="info">Email Address: {{ user_info.email }}</div>
+          <div class="info">Bank Account: {{ bankAccount.account_id }}</div>
+          <div class="info">
+            Current Balance: NT$ {{ bankAccount.balance|floatformat:0 }}
+          </div>
+          <button class="btn-profile btn-edit"><a href="{% url 'edit_profile' %}">Edit Profile</a></button>
+          <button class="btn-profile btn-change"><a href="{% url 'change_password' %}">Change password</a></button>
+          <button class="btn-profile btn-delete"><a href="{% url 'delete_account' %}">Delete Account</button>
+        </div>
       </div>
-    </div>
   </body>
 </html>

@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, UserProfileForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from . models import UserProfile, BankAccount
+from .models import UserProfile, BankAccount
 
 # Create your views here.
 
@@ -85,7 +85,19 @@ def UserLogout(request):
 
 @login_required(login_url='login')
 def editProfile(request):
-    pass
+    profile =request.user.userprofile
+    form=UserProfileForm(instance=profile)
+
+    if request.method=="POST":
+        form = UserProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+        
+
+    context={"form":form}
+    return render(request, "users/profile_form.html", context)
+    
 
 
 

@@ -22,7 +22,6 @@
   </head>
   <body>
     <div class="modal">
-      <button class="btn--close-modal">×</button>
       <h2 class="modal__header">Login Account</h2>
       <form method="POST" action="{% url 'login' %}" class="modal__form">
         {% csrf_token %}

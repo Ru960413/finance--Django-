@@ -12,9 +12,9 @@ urlpatterns = [
     path('logout/',  views.UserLogout, name='logout'),
     path('register/',  views.register, name='register'),
     path('profile/',  views.profile, name='profile'),
-    path('delete_account/',  views.deleteAccount, name='delete-account'),
-    path('edit_profile/',  views.editProfile, name='edit-profile'),
-    path('change_password/',  views.changePassword, name='change-password'),
+    path('delete_account/',  views.deleteAccount, name='delete_account'),
+    path('edit_profile/',  views.editProfile, name='edit_profile'),
+    path('change_password/',  views.changePassword, name='change_password'),
 
     # TODO: add reset password urls
     

@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -25,3 +27,6 @@ urlpatterns = [
     path('', include('users.urls')),
     path('currency/', include('currency.urls')),
 ]
+
+# connecting media url to media root, so django knows where to find user uploaded images
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -30,7 +30,7 @@
             class="btn operations__tab operations__tab--1 operations__tab--active"
             data-tab="1"
           >
-            Quote
+            Currency Own
           </button>
           <button class="btn operations__tab operations__tab--2" data-tab="2">
             Buy
@@ -39,31 +39,45 @@
             Sell
           </button>
           <button class="btn operations__tab operations__tab--4" data-tab="4">
-            History
+            Quote
           </button>
           <button class="btn operations__tab operations__tab--5" data-tab="5">
-            Currency Own
+            History
           </button>
         </div>
 
-        <!--Quote: render form for user to quote for currency-->
+        <!-- Currency own: allow user view currency on hand-->
         <div
           class="operations__content operations__content--1 operations__content--active"
         >
           <div class="operations__icon operations__icon--1"></div>
-          <form action="{% url 'quote' %}" method="POST">
-            {% csrf_token %}
-            <p class="note">
-              Please enter the currency code that you want to query.
-            </p>
-            <label class="form__label">From</label>
-            <input type="text" class="form__input" name="from_currency" />
-            <label class="form__label">To</label>
-            <label class="form__label">TWD</label>
-            <label class="form__label">Amount</label>
-            <input type="number" class="form__input" name="amount" />
-            <button class="form__btn" type="submit">→</button>
-          </form>
+          <div class="movements">
+            <table>
+              <thead>
+                <tr>
+                  <th>Currency</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for currency in currencies %}
+                <tr>
+                  <td>{{ currency.currency }}</td>
+                  <td>{{ currency.sum }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                  <td>You don't own any currencies...</td>
+                </tr>
+                {% endfor %} {% comment %} {% for key, value in rows.items %}
+                <tr>
+                  <td>{{ key }}</td>
+                  <td>{{ value }}</td>
+                </tr>
+                {% endfor %} {% endcomment %}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!--Buy: render form for user to buy currency-->
@@ -99,9 +113,28 @@
         </div>
 
         <!--Load dynamic data using variables-->
-        <!-- History: allow user view currency bought/sold-->
+        <!--Quote: render form for user to quote for currency-->
         <div class="operations__content operations__content--4">
           <div class="operations__icon operations__icon--4"></div>
+          <form action="{% url 'quote' %}" method="POST">
+            {% csrf_token %}
+            <p class="note">
+              Please enter the currency code that you want to query.
+            </p>
+            <label class="form__label">From</label>
+            <input type="text" class="form__input" name="from_currency" />
+            <label class="form__label">To</label>
+            <label class="form__label">TWD</label>
+            <label class="form__label">Amount</label>
+            <input type="number" class="form__input" name="amount" />
+            <button class="form__btn" type="submit">→</button>
+          </form>
+        </div>
+
+        <!--Load dynamic data using variables-->
+        <!-- History: allow user view currency bought/sold-->
+        <div class="operations__content operations__content--5">
+          <div class="operations__icon operations__icon--5"></div>
           <!-- MOVEMENTS -->
           <!-- add data dynamicly using currencyTransaction table-->
           <div class="movements">
@@ -124,31 +157,6 @@
               </div>
             </div>
             {% endif %} {% endfor %}
-          </div>
-        </div>
-
-        <!--Load dynamic data using variables-->
-        <!-- Currency own: allow user view currency on hand-->
-        <div class="operations__content operations__content--5">
-          <div class="operations__icon operations__icon--5"></div>
-          <div class="movements">
-            <table>
-              <thead>
-                <tr>
-                  <th>Currency</th>
-                  <th>Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                {{ id }}
-                {% for key, value in rows.items %}
-                <tr>
-                  <td>{{ key }}</td>
-                  <td>{{ value }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@
 
     1. When user is deleted close bank account and delete user profile(users/signals.py)
     2. implement reset password, change password, delete account features
+    3. Deploy project (change environmental variables)
 
 ## Extra
 

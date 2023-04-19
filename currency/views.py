@@ -24,23 +24,19 @@ def currencyDashboard(request):
     # get the sum of each currency from user's currencyTransaction table
 
     #currencies_own = currencyTransaction.objects.filter(account_id=bankAccount).values('currency','amount')
-    
-    # id = currencyTransaction.objects.filter(account_id=bankAccount).values('currency', 'amount').order_by('currency')
-
-    # can get account_id in dict, but get error: 'int' object has no attribute 'values'
-    account_id=currencyTransaction.objects.filter(account_id=bankAccount).values('account_id')[0]
-
+    currencies = currencyTransaction.objects.filter(account_id=bankAccount).values("currency").annotate(sum=Sum('amount')).order_by("currency")
     
     # Only works when account_id is provided in execute, cannot being passed in as parameter
-    cursor = connection.cursor()
-    currencies_own = cursor.execute("SELECT currency, SUM(amount) FROM currency_currencytransaction WHERE account_id_id=1 GROUP BY currency;")
-    if currencies_own:
-        rows = cursor.fetchall()
-        rows = dict(rows)
-    else:
-        rows=None
+    # cursor = connection.cursor()
+    # currencies_own = cursor.execute("SELECT currency, SUM(amount) FROM currency_currencytransaction WHERE account_id_id=1 GROUP BY currency;")
     
-    context={"users_record": users_record, "page":page, "rows": rows, "id":account_id}
+    # if currencies_own:
+    #     rows = cursor.fetchall()
+    #     rows = dict(rows)
+    # else:
+    #     rows=None
+    
+    context={"users_record": users_record, "page":page, "currencies": currencies}
     
     return render(request, 'currency/currencyDashboard.html', context)
     

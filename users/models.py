@@ -4,17 +4,26 @@ import uuid
 from datetime import datetime
 # Create your models here.
 
-# To-Do: implement user profile model
+# TODO: add profile picture column
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key=True)
     firstName = models.CharField(max_length=20)
     lastName = models.CharField(max_length=20)
     username = models.CharField(max_length=50, blank=True, null=True)
     email = models.EmailField(max_length=100, blank=True, null=True)
+    profile_image = models.ImageField(null=True, blank=True, upload_to='profiles/', default='profiles/user-default.png')
 
     def __str__(self):
         return str(self.username)
 
+    @property
+    def imageURL(self):
+        try:
+            url = self.profile_image.url
+        except:
+            url = '/img/user-default.png'
+
+        return url
 
 
 

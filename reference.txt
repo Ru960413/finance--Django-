@@ -7,6 +7,7 @@ https://stackoverflow.com/questions/8920221/get-the-integer-part-of-a-decimal-fi
 3. Sum the values retrieved from db
 https://docs.djangoproject.com/en/dev/topics/db/aggregation/#generating-aggregates-over-a-queryset
 https://stackoverflow.com/questions/51287539/sum-of-objects-prices-in-django-template
+https://stackoverflow.com/questions/69426522/aggregate-sum-in-django-sum-of-objects-with-the-same-name
 
 4. Django math filters
 https://pypi.org/project/django-mathfilters/
@@ -19,3 +20,4 @@ https://earthly.dev/blog/django-signals/
 
 7. put login and register at the same page
 https://stackoverflow.com/questions/17905377/how-to-put-login-and-registration-form-on-same-index-page
+

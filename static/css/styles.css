@@ -660,6 +660,8 @@ h4 {
   opacity: 0;
 }
 
+/* REGISTRATION FORM and LOGIN FORM */
+
 .forgot_password,
 .register_link,
 .login_link {
@@ -684,13 +686,7 @@ h4 {
   color: #777;
 }
 
-/* .content-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 1200px;
-  height: auto;
-} */
+/* PROFILE FORM */
 .content-wrapper {
   display: grid;
   align-items: center;
@@ -727,7 +723,7 @@ h4 {
 }
 
 .profile-pic {
-  max-width: 250px;
+  width: 250px;
   height: auto;
   border-radius: 2.5rem;
   margin: auto;
@@ -771,4 +767,12 @@ h4 {
 a {
   text-decoration: none;
   color: #222;
+}
+
+/* EDIT PROFILE FORM */
+.profile_form_container {
+  margin-top: 10rem;
+  padding: 2.5rem;
+  border: #444 0.1rem solid;
+  border-radius: 5rem;
 }

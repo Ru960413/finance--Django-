@@ -2,7 +2,6 @@
 
     1. When user is deleted close bank account and delete user profile(users/signals.py)
     2. implement reset password, change password, delete account features
-    3. add column in db for user to upload profile pic
 
 ## Extra
 
@@ -14,8 +13,9 @@ DONE
 - When user register create a bank account and the user's profile (users/signals.py)
 - Calculate interest(users/models.py)
 - use JavaScript to render different forms at currency dashboard
-- Implement currency exchange feature(mostly done, but there is a unsolved issue)
+- Implement currency exchange feature(mostly done, but currencies own tab is not working as desired) SOLVED, YAY!
 - create user profile page
+- add column in db for user to upload profile pic
 
 Cancelled
 

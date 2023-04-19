@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'img/icon.png' %}"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %} " />
+    <title>Bankist | Edit Profile</title>
+
+    <script defer src="{% static 'js/script.js' %}"></script>
+  </head>
+  <body>
+    {% include 'users/navbar.html' %}
+
+    <!--IMPORTANT: need to add enctype="multipart/form-data" when uploading a file-->
+    <div class="info_container profile_form_container">
+      <form
+        method="POST"
+        action="{% url 'edit_profile' %}"
+        class="modal__form"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %} {% for field in form %}
+        <label>{{ field.label }}</label>
+        {{ field }} {% endfor %}
+        <button class="btn" type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

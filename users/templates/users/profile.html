@@ -42,11 +42,11 @@
           <div class="info">Email Address: {{ user_info.email }}</div>
           <div class="info">Bank Account: {{ bankAccount.account_id }}</div>
           <div class="info">
-            Current Balance: NT$ {{ bankAccount.balance|floatformat:0 }}
+            Current Balance: NT$ {{ totalBalance|floatformat:0 }}
           </div>
           <button class="btn-profile btn-edit"><a href="{% url 'edit_profile' %}">Edit Profile</a></button>
           <button class="btn-profile btn-change"><a href="{% url 'change_password' %}">Change password</a></button>
-          <button class="btn-profile btn-delete"><a href="{% url 'delete_account' %}">Delete Account</button>
+          <button class="btn-profile btn-delete"><a href="{% url 'inactivate_account' %}">Inactivate Account</button>
         </div>
       </div>
   </body>

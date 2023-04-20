@@ -672,6 +672,26 @@ h4 {
   font-weight: 400;
 }
 
+.inactivate_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.text {
+  display: flex;
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin: auto;
+}
+
+.back__btn {
+  display: flex;
+  font-size: 1.7rem;
+  font-weight: 400;
+  text-decoration: none;
+  margin: 2rem;
+}
+
 .register_text,
 .login_text {
   display: flex;

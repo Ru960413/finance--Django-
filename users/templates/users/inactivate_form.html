@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'img/icon.png' %}"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %} " />
+    <title>Bankist | Inactivate Account</title>
+
+    <script defer src="{% static 'js/script.js' %}"></script>
+  </head>
+  <body>
+    {% include 'users/navbar.html' %}
+
+    <!--IMPORTANT: need to add enctype="multipart/form-data" when uploading a file-->
+    <div class="info_container profile_form_container">
+      <a href="{% url 'profile' %}" class="back__btn">← Go back</a>
+      <form
+        method="POST"
+        action="{% url 'inactivate_account' %}"
+        class="modal__form inactivate_form"
+      >
+        {% csrf_token %}
+        <p class="text">Are you sure you want to inactivate your account?</p>
+        <button class="btn" type="submit">Confirm</button>
+      </form>
+    </div>
+  </body>
+</html>

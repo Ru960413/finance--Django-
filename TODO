@@ -1,8 +1,7 @@
 # TO-DOs for finance app
 
-    1. When user is deleted close bank account and delete user profile(users/signals.py)
-    2. implement reset password, change password, delete account features
-    3. Deploy project (change environmental variables)
+    1. Deploy project (change environmental variables)
+    2. implement reset password related features
 
 ## Extra
 
@@ -17,6 +16,7 @@ DONE
 - Implement currency exchange feature(mostly done, but currencies own tab is not working as desired) SOLVED, YAY!
 - create user profile page
 - add column in db for user to upload profile pic
+- implement change password, inactivate account features
 
 Cancelled
 

@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="{% static 'css/styles.css' %} " />
+    <link rel="stylesheet" href="{% static 'css/messages.css' %} " />
     <title>Bankist | Register</title>
 
     <script defer src="{% static 'css/styles.css' %}"></script>
@@ -27,13 +28,13 @@
         in just <span class="highlight">5 minutes</span>
       </h2>
       <!-- To-Do: Style the messages and help text-->
-      {% comment %} {% if messages %}
+      {% if messages %}
       <ul class="messages">
           {% for message in messages %}
           <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
           {% endfor %}
       </ul>
-      {% endif %} {% endcomment %}
+      {% endif %}
 
       <form method="POST" action="{% url 'register' %}" class="modal__form">
         {% csrf_token %} 

@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="{% static 'css/styles.css' %} " />
+    <link rel="stylesheet" href="{% static 'css/messages.css' %} " />
     <title>Bankist | When Finance meets Minimalist</title>
 
     <script defer src="{% static 'js/script.js' %}"></script>
@@ -23,8 +24,15 @@
   <body>
     <header class="header">
       {% include 'users/navbar.html' %}
-
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
       <div class="header__title">
+      
         <h1>
           When
           <!-- Green highlight effect -->

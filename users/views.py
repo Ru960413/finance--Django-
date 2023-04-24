@@ -49,6 +49,7 @@ def UserLogin(request):
 
         if user is not None:
             login(request, user)
+            messages.success(request, f"Hello {user.first_name}! Welcome back!")
             return redirect("bankDashboard")
         else:
             pass
@@ -81,8 +82,8 @@ def register(request):
 @login_required(login_url="login")
 def UserLogout(request):
     logout(request)
-    messages.success(request, "User logged out successfully!")
-    return render(request, "users/index.html")
+    messages.success(request, "You've successfully logged out !")
+    return redirect("")
 
 
 @login_required(login_url="login")

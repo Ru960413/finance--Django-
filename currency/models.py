@@ -8,6 +8,7 @@ class currencyTransaction(models.Model):
     time = models.DateTimeField(auto_now=True)
     currency = models.CharField(max_length=20, null=False, blank=False)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
+    rate = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
 
     def __str__(self):

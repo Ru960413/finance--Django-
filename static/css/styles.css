@@ -662,7 +662,6 @@ h4 {
 
 /* REGISTRATION FORM and LOGIN FORM */
 
-.forgot_password,
 .register_link,
 .login_link {
   display: flex;

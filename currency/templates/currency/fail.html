@@ -15,8 +15,8 @@
       href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{% static 'css/styles.css' %} " />
-    <title>Bankist | When Finance meets Minimalist</title>
+    <link rel="stylesheet" href="{% static 'css/fail.css' %} " />
+    <title>Bankist | Fail</title>
 
     <script defer src="{% static 'js/script.js' %}"></script>
   </head>
@@ -26,7 +26,6 @@
       <a href="{% url 'currencyDashboard' %}" class="back__btn">← Go back</a>
       <div class="alert--container alert--container--fail">
         <div class="alert--message">
-          <h2>Oh no! Someting went wrong during {{ action }}.</h2>
           <h2>{{ message }}</h2>
         </div>
       </div>

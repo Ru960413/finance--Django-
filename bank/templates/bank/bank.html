@@ -17,11 +17,19 @@
     />
 
     <link rel="stylesheet" href="{% static 'css/bank.css' %} " />
+    <link rel="stylesheet" href="{% static 'css/messages.css' %} " />
     <title>Bankist | Bank</title>
   </head>
   <body>
     <!-- TOP NAVIGATION -->
     <nav>{% include "users/navbar.html" %}</nav>
+    {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+    {% endif %}
 
     <!-- Make the data dynamic: DONE-->
     <main class="app">

@@ -1,0 +1,21 @@
+.success {
+  list-style: none;
+  background-color: #9be15d;
+  padding: 1rem;
+  border-radius: 5rem;
+  font-size: 1.5rem;
+}
+
+.error {
+  list-style: none;
+  background-color: #ff585f;
+  padding: 1rem;
+  border-radius: 5rem;
+  font-size: 1.5rem;
+}
+
+.messages {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}

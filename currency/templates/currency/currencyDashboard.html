@@ -69,12 +69,7 @@
                 <tr>
                   <td>You don't own any currencies...</td>
                 </tr>
-                {% endfor %} {% comment %} {% for key, value in rows.items %}
-                <tr>
-                  <td>{{ key }}</td>
-                  <td>{{ value }}</td>
-                </tr>
-                {% endfor %} {% endcomment %}
+                {% endfor %}
               </tbody>
             </table>
           </div>
@@ -146,6 +141,7 @@
               <div class="movements__value">
                 {{ record.amount|floatformat:0 }}
               </div>
+              <div class="movements__value">{{ record.rate }}</div>
             </div>
             {% else %}
             <div class="movements__row">
@@ -155,6 +151,7 @@
               <div class="movements__value">
                 {{ record.amount|abs|floatformat:0 }}
               </div>
+              <div class="movements__value">{{ record.rate }}</div>
             </div>
             {% endif %} {% endfor %}
           </div>

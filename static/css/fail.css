@@ -120,14 +120,12 @@ h4 {
 .nav__link--btn:visited {
   padding: 0.8rem 2.5rem;
   border-radius: 3rem;
-  background-color: var(--color-primary);
   color: #222;
 }
 
 .nav__link--btn:hover,
 .nav__link--btn:active {
   color: inherit;
-  background-color: var(--color-primary-darker);
   color: #333;
 }
 
@@ -150,6 +148,14 @@ h4 {
   display: flex;
   justify-content: center;
   padding: 25px;
+  flex-direction: column;
+  font-size: 1.7rem;
+  margin: auto;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
 }
 
 .alert--container {
@@ -158,12 +164,6 @@ h4 {
   height: auto;
   width: 700px;
   border-radius: 10px;
-}
-
-.alert--message {
-  display: flex;
-  flex-direction: column;
-  font-size: 1.7rem;
 }
 
 .alert--container--fail {

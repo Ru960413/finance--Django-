@@ -21,3 +21,5 @@ https://earthly.dev/blog/django-signals/
 7. put login and register at the same page
 https://stackoverflow.com/questions/17905377/how-to-put-login-and-registration-form-on-same-index-page
 
+activate venv:
+cd into finance (Django) then type source env/bin/activate

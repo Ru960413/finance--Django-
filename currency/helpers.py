@@ -2,7 +2,10 @@
 import requests
 import urllib.parse
 import math
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 # logic: how much TWD do user need to get the amount of currency they need?
 # def convert(currency_code, amount):
@@ -10,7 +13,7 @@ import math
 #         api_key = 'de854dd1ac96a4c45b041347'
 #         url = f'https://v6.exchangerate-api.com/v6/{api_key}/pair/{urllib.parse.quote_plus(currency_code)}/TWD/{amount}'
 #         response = requests.get(url)
-#         response.raise_for_status()    
+#         response.raise_for_status()
 #     except requests.RequestException:
 #         return None
 
@@ -26,14 +29,14 @@ import math
 #         return None
 
 
-
 # for user to query currency rate
 def lookup(from_currency, amount):
     try:
-        api_key = 'de854dd1ac96a4c45b041347'
-        url = f'https://v6.exchangerate-api.com/v6/{api_key}/pair/{urllib.parse.quote_plus(from_currency)}/TWD/{amount}'
+        # api_key = "de854dd1ac96a4c45b041347"
+        api_key = os.getenv('api_key')
+        url = f"https://v6.exchangerate-api.com/v6/{api_key}/pair/{urllib.parse.quote_plus(from_currency)}/TWD/{amount}"
         response = requests.get(url)
-        response.raise_for_status()    
+        response.raise_for_status()
     except requests.RequestException:
         return None
 
@@ -47,8 +50,3 @@ def lookup(from_currency, amount):
 
 def twd(value):
     return f"{math.ceil(value)}"
-
-
-
-
-

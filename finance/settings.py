@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-_&%x3o%^ru%q!mgyuw%xj8$(7xcp+^wd*(iq5(^i)*--yhxok3"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -52,6 +52,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "finance.urls"
@@ -148,3 +150,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # tell Django where to store the image
 MEDIA_ROOT = os.path.join(BASE_DIR, "static/img")
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
+if os.getcwd() == '/app':
+    DEBUG=False

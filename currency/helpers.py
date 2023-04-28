@@ -32,7 +32,6 @@ load_dotenv()
 # for user to query currency rate
 def lookup(from_currency, amount):
     try:
-        # api_key = "de854dd1ac96a4c45b041347"
         api_key = os.getenv('api_key')
         url = f"https://v6.exchangerate-api.com/v6/{api_key}/pair/{urllib.parse.quote_plus(from_currency)}/TWD/{amount}"
         response = requests.get(url)

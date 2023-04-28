@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECRET_KEY = "django-insecure-_&%x3o%^ru%q!mgyuw%xj8$(7xcp+^wd*(iq5(^i)*--yhxok3"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '.localhost', 'finance-django-production.up.railway.app']
 

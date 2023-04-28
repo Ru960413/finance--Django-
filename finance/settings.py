@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-_&%x3o%^ru%q!mgyuw%xj8$(7xcp+^wd*(iq5(^i)*--yhxok3"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']
 
 
 # Application definition
@@ -150,8 +150,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # tell Django where to store the image
 MEDIA_ROOT = os.path.join(BASE_DIR, "static/img")
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 
 if os.getcwd() == '/app':

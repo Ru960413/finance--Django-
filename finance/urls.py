@@ -29,4 +29,5 @@ urlpatterns = [
 ]
 
 # connecting media url to media root, so django knows where to find user uploaded images
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

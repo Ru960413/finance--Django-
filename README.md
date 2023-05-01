@@ -11,7 +11,7 @@
 
 <https://finance-django-production.up.railway.app/>
 
-![Welcome Page](pics/WelcomePage.png "Welcome Page")
+![Welcome Page](pics/welcomePage.png "Welcome Page")
 
 ### 所使用的技術
 

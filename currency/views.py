@@ -153,7 +153,7 @@ def sell(request):
             message = "Please enter the currency you want to exchange for."
             context = {"action": action, "message": message}
             return render(request, "currency/fail.html", context)
-        
+
         conversion = lookup(currency_code, amount)
 
         if conversion == None:
@@ -168,7 +168,14 @@ def sell(request):
                 account_id=bankAccount, currency=currency_code
             ).aggregate(Sum("amount"))
 
-            currency_own = int(currency_own["amount__sum"])
+            # check if user has the currency
+            try:
+                currency_own = int(currency_own["amount__sum"])
+
+            except (KeyError, ValueError, TypeError):
+                message = "Sorry, you don't have enough to sell..."
+                context = {"action": action, "message": message}
+                return render(request, "currency/fail.html", context)
 
             # compare the amount of currency in the form to the amount of currency the user own:
             # if user doesn't have enough to sell, then render error message

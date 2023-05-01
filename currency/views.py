@@ -95,31 +95,36 @@ def buy(request):
         else:
             # get exchange result and compare it with user's balance to see if user can afford it
             result = lookup(currency_code, amount)
-            result = Decimal(twd(result))
-
-            # if user cannot afford it, render error message
-            if result > balance:
-                message = "Sorry you cannot afford it..."
+            if result == None:
+                message = "The currency you enter doesn't exist."
                 context = {"action": action, "message": message}
                 return render(request, "currency/fail.html", context)
-
             else:
-                # update user's bank account
-                bankAccount.balance -= result
-                rate = result / Decimal(amount)
-                bankAccount.save()
+                result = Decimal(twd(result))
 
-                # add it to currency transaction record
-                new_record = currencyTransaction(
-                    account_id=bankAccount,
-                    currency=currency_code,
-                    amount=amount,
-                    rate=rate,
-                )
-                new_record.save()
+                # if user cannot afford it, render error message
+                if result > balance:
+                    message = "Sorry you cannot afford it..."
+                    context = {"action": action, "message": message}
+                    return render(request, "currency/fail.html", context)
 
-                context = {"action": action}
-                return render(request, "currency/success.html", context)
+                else:
+                    # update user's bank account
+                    bankAccount.balance -= result
+                    rate = result / Decimal(amount)
+                    bankAccount.save()
+
+                    # add it to currency transaction record
+                    new_record = currencyTransaction(
+                        account_id=bankAccount,
+                        currency=currency_code,
+                        amount=amount,
+                        rate=rate,
+                    )
+                    new_record.save()
+
+                    context = {"action": action}
+                    return render(request, "currency/success.html", context)
 
     return render(request, "currency/currencyDashboard.html")
 
@@ -148,6 +153,13 @@ def sell(request):
             message = "Please enter the currency you want to exchange for."
             context = {"action": action, "message": message}
             return render(request, "currency/fail.html", context)
+        
+        conversion = lookup(currency_code, amount)
+
+        if conversion == None:
+            message = "The currency you enter doesn't exist."
+            context = {"action": action, "message": message}
+            return render(request, "currency/fail.html", context)
 
         # check if user has enough to sell
         else:
@@ -168,7 +180,7 @@ def sell(request):
             # else sell the currency and update user's back account balance
             else:
                 # update user's bank account
-                conversion = lookup(currency_code, amount)
+
                 conversion = Decimal(conversion)
                 bankAccount.balance += conversion
                 rate = conversion / amount
